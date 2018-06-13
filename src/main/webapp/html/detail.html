@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>小说内容</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<style type="text/css">
+		h1 {
+			text-align: center;
+		}
+		.container {
+			margin-top: 30px;
+			margin-bottom:  30px;
+		}
+		.col-sm-4 {
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<h1 id="title"></h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4"><a href="#" class="prevPage">上一页</a></div>
+		<div class="col-sm-4"><a href="#" class="home">目录</a></div>
+		<div class="col-sm-4"><a href="#" class="nextPage">下一页</a></div>
+	</div>
+	<div class="row">
+		<div id="content" class="col-sm-12">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4"><a href="#" class="prevPage">上一页</a></div>
+		<div class="col-sm-4"><a href="#" class="home">目录</a></div>
+		<div class="col-sm-4"><a href="#" class="nextPage">下一页</a></div>
+	</div>
+</div>
+
+<script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+		var url = location.href.split('=')[1];
+		$.ajax({
+			url: '../detail.do',
+			type: 'get',
+			dataType: 'json',
+			data: {url: url},
+			success: function (data) {
+				getContent(data.data);
+			}
+		});
+		$('.prevPage').on('click', function () {
+			var url = $('.prevPage').attr('url');
+			$.ajax({
+				url: '../detail.do',
+				type: 'get',
+				dataType: 'json',
+				data: {url: url},
+				success: function (data) {
+					getContent(data.data);
+				}
+			});
+		});
+		$('.nextPage').on('click', function () {
+			var url = $('.nextPage').attr('url');
+			$.ajax({
+				url: '../detail.do',
+				type: 'get',
+				dataType: 'json',
+				data: {url: url},
+				success: function (data) {
+					getContent(data.data);
+				}
+			});
+		});
+		$('.home').on('click', function () {
+			var url = $('.home').attr('url');
+			location.href='chapter.html?url=' + url;
+		});
+		function getContent(result) {
+			console.log(result);
+				$('#title').html(result.title);
+				$('#content').html(result.content);
+				$('.prevPage').attr('url', result.prev);
+				$('.nextPage').attr('url', result.next);
+				$('.home').attr('url', url.substring(0, url.lastIndexOf('/') + 1));
+		}
+	});
+</script>
+</body>
+</html>

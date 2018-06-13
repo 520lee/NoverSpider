@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sites>
+    <site>
+        <title>新笔趣阁</title>
+        <charset>UTF-8</charset>
+        <url>https:/www.xxbiquge.com</url>
+        <chapter-list-selector>#list dd a</chapter-list-selector>
+        <chapter-title-selector>.bookname h1</chapter-title-selector>
+        <chapter-content-selector>#content</chapter-content-selector>
+        <chapter-prev-selector>.bottem2 a</chapter-prev-selector>
+        <chapter-next-selector>.bottem2 a,2</chapter-next-selector>
+    </site>
+    <site>
+        <title>顶点小说</title>
+        <charset>GBK</charset>
+        <url>https:/www.x23us.com</url>
+        <chapter-list-selector>#at td a</chapter-list-selector>
+        <chapter-title-selector>#amain h1</chapter-title-selector>
+        <chapter-content-selector>#contents</chapter-content-selector>
+        <chapter-prev-selector>#footlink a</chapter-prev-selector>
+        <chapter-next-selector>#footlink a,2</chapter-next-selector>
+        <novel-selector>table tr</novel-selector>
+    </site>
+    <site>
+        <title>读一读小说</title>
+        <charset>GBK</charset>
+        <url>https:/www.du1du.la</url>
+        <chapter-list-selector>.chapters .chapter a</chapter-list-selector>
+        <chapter-title-selector>.text h1</chapter-title-selector>
+        <chapter-content-selector>#content</chapter-content-selector>
+        <chapter-prev-selector>#footlink a</chapter-prev-selector>
+        <chapter-next-selector>#footlink a,2</chapter-next-selector>
+        <novel-selector>.list_content</novel-selector>
+    </site>
+    <site>
+        <title>笔趣阁</title>
+        <charset>GBK</charset>
+        <url>https:/www.ybdu.com</url>
+        <chapter-list-selector>.mulu_list li a</chapter-list-selector>
+        <chapter-title-selector>.h1title h1</chapter-title-selector>
+        <chapter-content-selector>#htmlContent</chapter-content-selector>
+        <chapter-prev-selector>#pager_prev</chapter-prev-selector>
+        <chapter-next-selector>#pager_next</chapter-next-selector>
+    </site>
+    <site>
+        <title>37文学</title>
+        <charset>GBK</charset>
+        <url>https:/www.37zw.net</url>
+        <chapter-list-selector>#list dd a</chapter-list-selector>
+        <chapter-title-selector>.bookname h1</chapter-title-selector>
+        <chapter-content-selector>#content</chapter-content-selector>
+        <chapter-prev-selector>.bottem2,1</chapter-prev-selector>
+        <chapter-next-selector>.bottem2,3</chapter-next-selector>
+        <novel-selector>.novellist li</novel-selector>
+    </site>
+    <site>
+        <title>全小说</title>
+        <charset>GBK</charset>
+        <url>https://qxs.la</url>
+        <chapter-list-selector>.chapters .chapter a</chapter-list-selector>
+        <chapter-title-selector>.text h1</chapter-title-selector>
+        <chapter-content-selector>#content</chapter-content-selector>
+        <chapter-prev-selector>#prevLink</chapter-prev-selector>
+        <chapter-next-selector>#nextLink</chapter-next-selector>
+        <novel-selector>.list_content</novel-selector>
+    </site>
+</sites>

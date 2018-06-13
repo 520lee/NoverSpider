@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.king.dao.NovelMapper">
+  <resultMap id="BaseResultMap" type="com.king.pojo.Novel">
+    <constructor>
+      <idArg column="url" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="author" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="last_update_chapter" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="last_update_chapter_url" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="update_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="status" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="platform_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="add_date" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    url, name, author, last_update_chapter, last_update_chapter_url, update_date, status,
+    platform_id, add_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from novel
+    where url = #{url,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from novel
+    where url = #{url,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.king.pojo.Novel">
+    insert into novel (url, name, author,
+      last_update_chapter, last_update_chapter_url,
+      update_date, status, platform_id,
+      add_date)
+    values (#{url,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR},
+      #{lastUpdateChapter,jdbcType=VARCHAR}, #{lastUpdateChapterUrl,jdbcType=VARCHAR},
+      #{updateDate,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{platformId,jdbcType=INTEGER},
+      now())
+  </insert>
+  <insert id="insertSelective" parameterType="com.king.pojo.Novel">
+    insert into novel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="url != null">
+        url,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="lastUpdateChapter != null">
+        last_update_chapter,
+      </if>
+      <if test="lastUpdateChapterUrl != null">
+        last_update_chapter_url,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="platformId != null">
+        platform_id,
+      </if>
+      <if test="addDate != null">
+        add_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateChapter != null">
+        #{lastUpdateChapter,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateChapterUrl != null">
+        #{lastUpdateChapterUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="platformId != null">
+        #{platformId,jdbcType=INTEGER},
+      </if>
+      <if test="addDate != null">
+        #{addDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.king.pojo.Novel">
+    update novel
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateChapter != null">
+        last_update_chapter = #{lastUpdateChapter,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateChapterUrl != null">
+        last_update_chapter_url = #{lastUpdateChapterUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="platformId != null">
+        platform_id = #{platformId,jdbcType=INTEGER},
+      </if>
+      <if test="addDate != null">
+        #{addDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where url = #{url,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.king.pojo.Novel">
+    update novel
+    set name = #{name,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      last_update_chapter = #{lastUpdateChapter,jdbcType=VARCHAR},
+      last_update_chapter_url = #{lastUpdateChapterUrl,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      platform_id = #{platformId,jdbcType=INTEGER},
+      add_date = #{addDate,jdbcType=TIMESTAMP}
+    where url = #{url,jdbcType=VARCHAR}
+  </update>
+  <select id="selectAll" resultType="int">
+    select count(1) from novel
+  </select>
+  <delete id="truncateAll">
+    truncate novel
+  </delete>
+  <select id="selectByKey" parameterType="string" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from novel
+    where name like #{key}
+  </select>
+</mapper>
